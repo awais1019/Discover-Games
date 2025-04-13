@@ -14,7 +14,7 @@ function App() {
       }}
       templateColumns={{
         base: "1fr",           // only one column on mobile
-        lg: "auto 1fr",       // aside gets 250px, main gets remaining space
+        lg: "200px 1fr",       // aside gets 250px, main gets remaining space
       }}
     >
       <GridItem area="nav">
@@ -22,7 +22,7 @@ function App() {
       </GridItem>
 
       {shouldShowAside && (
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={5}>
           <GenresList/>
         </GridItem>
       )}
