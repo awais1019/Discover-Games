@@ -4,10 +4,13 @@ import GameGrid from "./GameGrid";
 import GenresList from "./GenresList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import PlatFormSelector from "./PlatFormSelector";
+import { PlatForm } from "./hooks/useGames";
 
 function App() {
   const shouldShowAside = useBreakpointValue({ base: false, lg: true });
   const [selectedGenre,setSeletedGenre]=useState<Genre | null>(null)
+  const [selectedPlatform,setSelectedPlatform]=useState<PlatForm | null>(null)
 
   return (
     <Grid
@@ -30,7 +33,8 @@ function App() {
         </GridItem>
       )}
       <GridItem area="main">
-        <GameGrid genre={selectedGenre}/>
+        <PlatFormSelector onSelected={(p)=>setSelectedPlatform(p)} selectedPlatform={selectedPlatform}/>
+        <GameGrid genre={selectedGenre} platform={selectedPlatform}/>
       </GridItem>
     </Grid>
   );

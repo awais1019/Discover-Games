@@ -20,5 +20,5 @@ type WrapperPlatForm = {
   platform: PlatForm;
 };
 
-export const useGame = (selectedGenre:Genre |null)=>useData<Game>("./games",{params:{genres:selectedGenre?.id}},[selectedGenre?.id]);
+export const useGame = (selectedGenre:Genre |null, selectedPlatform:PlatForm|null)=>useData<Game>("./games",{params:{genres:selectedGenre?.id,platform:selectedPlatform?.id}},[selectedGenre?.id,selectedPlatform?.id]);
   
