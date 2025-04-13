@@ -6,6 +6,7 @@ export type Game = {
   id: number;
   name: string;
   background_image:string;
+  parent_platforms:WrapperPlatForm[]
   
 };
 
@@ -13,6 +14,14 @@ type FetchGamesResponse = {
   count: number;
   results: Game[];
 };
+export type PlatForm={
+  id:number;
+  name:string;
+  slug:string;
+}
+type WrapperPlatForm={
+  platform:PlatForm;
+}
 
 
 export const useGame=()=>{

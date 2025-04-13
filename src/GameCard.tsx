@@ -1,5 +1,6 @@
 import { Game } from "./hooks/useGames";
-import { Card, Heading, Image } from "@chakra-ui/react";
+import { Card, Heading, Image, Text } from "@chakra-ui/react";
+import PlatFormsIconsList from "./PlatFormsIconsList";
 
 type Props = {
   game: Game;
@@ -12,8 +13,11 @@ export default function GameCard({ game }: Props) {
       <Card.Header>
         <Heading fontSize="xl">{game.name}</Heading>
       </Card.Header>
-
-      <Card.Body></Card.Body>
+      <Card.Body>
+       <PlatFormsIconsList platforms={
+        game.parent_platforms.map(p=>p.platform)
+       }/>
+      </Card.Body>
     </Card.Root>
   );
 }
