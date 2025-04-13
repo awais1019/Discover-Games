@@ -1,5 +1,6 @@
 
 import { useData } from "./useData";
+import { Genre } from "./useGenres";
 
 export type Game = {
   id: number;
@@ -19,5 +20,5 @@ type WrapperPlatForm = {
   platform: PlatForm;
 };
 
-export const useGame = ()=>useData<Game>("./games");
+export const useGame = (selectedGenre:Genre |null)=>useData<Game>("./games",{params:{genres:selectedGenre?.id}},[selectedGenre?.id]);
   

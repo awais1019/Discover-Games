@@ -2,9 +2,12 @@ import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import NavBar from "./NavBar";
 import GameGrid from "./GameGrid";
 import GenresList from "./GenresList";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
   const shouldShowAside = useBreakpointValue({ base: false, lg: true });
+  const [selectedGenre,setSeletedGenre]=useState<Genre | null>(null)
 
   return (
     <Grid
@@ -13,8 +16,8 @@ function App() {
         lg: `"nav nav" "aside main"`,
       }}
       templateColumns={{
-        base: "1fr",           // only one column on mobile
-        lg: "200px 1fr",       // aside gets 250px, main gets remaining space
+        base: "1fr",          
+        lg: "200px 1fr",       
       }}
     >
       <GridItem area="nav">
@@ -22,12 +25,12 @@ function App() {
       </GridItem>
 
       {shouldShowAside && (
-        <GridItem area="aside" paddingX={5}>
-          <GenresList/>
+        <GridItem area="aside" paddingX={3}>
+          <GenresList onSelected={(g)=>setSeletedGenre(g) } selectedGenre={selectedGenre}/>
         </GridItem>
       )}
       <GridItem area="main">
-        <GameGrid/>
+        <GameGrid genre={selectedGenre}/>
       </GridItem>
     </Grid>
   );
