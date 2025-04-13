@@ -10,7 +10,7 @@ type Props = {
 
 export default function GameCard({ game }: Props) {
   return (
-    <Card.Root size="sm" borderRadius={10} overflow="hidden">
+    <Card.Root>
       <Image src={getCroppedImgUrl(game.background_image)} alt={game.name} />
       <Card.Header>
         <Heading fontSize="xl">{game.name}</Heading>
