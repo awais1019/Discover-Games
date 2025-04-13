@@ -6,7 +6,8 @@ export type Game = {
   id: number;
   name: string;
   background_image:string;
-  parent_platforms:WrapperPlatForm[]
+  parent_platforms:WrapperPlatForm[];
+  metacritic:number
   
 };
 
