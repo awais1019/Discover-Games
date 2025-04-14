@@ -14,7 +14,7 @@ export default function CriticsScore({ score }: Props) {
       borderRadius={"5px"}
       paddingX={2}
     >
-      {score}
+      {score>0?score:"0"}
     </Badge>
   );
 }

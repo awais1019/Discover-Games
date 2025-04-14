@@ -33,7 +33,7 @@ export default function PlatFormsIconsList({ platforms }: Props) {
     <>
     <HStack marginY={1}>
     {platforms.map((p) => (
-        <Icon as={iconMap[p.slug]} color={'gray.500'} />
+        <Icon key={p.slug} as={iconMap[p.slug]} color={'gray.500'} />
       ))}
     </HStack>
       
