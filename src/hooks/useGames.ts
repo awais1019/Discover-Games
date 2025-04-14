@@ -1,6 +1,6 @@
 
+import { GameQurey } from "@/App";
 import { useData } from "./useData";
-import { Genre } from "./useGenres";
 
 export type Game = {
   id: number;
@@ -18,7 +18,10 @@ export type PlatForm = {
 };
 type WrapperPlatForm = {
   platform: PlatForm;
+
 };
 
-export const useGame = (selectedGenre:Genre |null, selectedPlatform:PlatForm|null)=>useData<Game>("./games",{params:{genres:selectedGenre?.id,platform:selectedPlatform?.id}},[selectedGenre?.id,selectedPlatform?.id]);
+export const useGame = (gameQurey:GameQurey)=>
+  useData<Game>("./games",{params:{genres:gameQurey.genre?.id,
+    platforms:gameQurey.platform?.id,ordering:gameQurey.sortOrder}},[gameQurey]);
   
