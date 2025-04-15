@@ -1,4 +1,3 @@
-
 import { GameQurey } from "@/App";
 import { useData } from "./useData";
 
@@ -10,7 +9,6 @@ export type Game = {
   metacritic: number;
 };
 
-
 export type PlatForm = {
   id: number;
   name: string;
@@ -18,10 +16,18 @@ export type PlatForm = {
 };
 type WrapperPlatForm = {
   platform: PlatForm;
-
 };
 
-export const useGame = (gameQurey:GameQurey)=>
-  useData<Game>("./games",{params:{genres:gameQurey.genre?.id,
-    platforms:gameQurey.platform?.id,ordering:gameQurey.sortOrder}},[gameQurey]);
-  
+export const useGame = (gameQurey: GameQurey) =>
+  useData<Game>(
+    "./games",
+    {
+      params: {
+        genres: gameQurey.genre?.id,
+        platforms: gameQurey.platform?.id,
+        ordering: gameQurey.sortOrder,
+        search: gameQurey.search,
+      },
+    },
+    [gameQurey]
+  );

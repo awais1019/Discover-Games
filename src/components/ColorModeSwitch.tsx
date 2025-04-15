@@ -10,7 +10,7 @@ export default function ColorModeSwitch() {
    
     <HStack>
     <Switch onChange={toggleColorMode} checked={colorMode==='dark'} colorPalette={'green'}/>
-    <Text>Dark Mode</Text>
+    <Text whiteSpace={"nowrap"}>Dark Mode</Text>
     </HStack>
   )
 }

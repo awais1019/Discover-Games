@@ -1,4 +1,4 @@
-import { Menu, Portal } from "@chakra-ui/react";
+import { Flex, Menu, Portal } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -7,8 +7,8 @@ const sortOrder = [
   { value: "-date", label: "Date Added" },
   { value: "name", label: "Name" },
   { value: "-released", label: "Release date" },
-  { value: "-metacritic", label: "Popularity" },
-  { value: "-rating", label: "Average rating" },
+  { value: "metacritic", label: "Popularity" },
+  { value: "rating", label: "Average rating" },
 ];
 
 type Props={
@@ -23,8 +23,11 @@ export default function SortSelector({onSelectedOrder,selectedOrder}:Props) {
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button variant="outline" size="sm">
-          Order by:{currentSortOrder?.label||"Relevance"}
-          <BsChevronDown />
+           <Flex align="center" gap={2}>
+           Order by:{currentSortOrder?.label||"Relevance"}
+           <BsChevronDown />
+           </Flex>
+
         </Button>
       </Menu.Trigger>
       <Portal>

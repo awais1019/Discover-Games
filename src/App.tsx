@@ -12,6 +12,7 @@ export type GameQurey={
   genre:Genre|null;
   platform:PlatForm|null;
   sortOrder:string;
+  search:string;
 }
 
 
@@ -31,7 +32,7 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar/>
+        <NavBar onSearch={(search)=>setGameQurey({...gameQurey,search})}/>
       </GridItem>
 
       {shouldShowAside && (
