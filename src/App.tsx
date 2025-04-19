@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, useBreakpointValue } from "@chakra-ui/react";
 import NavBar from "./NavBar";
 import GameGrid from "./GameGrid";
 import GenresList from "./GenresList";
@@ -7,6 +7,7 @@ import { Genre } from "./hooks/useGenres";
 import PlatFormSelector from "./PlatFormSelector";
 import { PlatForm } from "./hooks/useGames";
 import SortSelector from "./SortSelector";
+import DynamicHeading from "./DynamicHeading";
 
 export type GameQurey={
   genre:Genre|null;
@@ -41,11 +42,14 @@ function App() {
         </GridItem>
       )}
       <GridItem area="main">
-        <HStack spaceX={1} paddingX={2}>
-        <PlatFormSelector onSelected={(platform)=>setGameQurey({...gameQurey,platform})} selectedPlatform={gameQurey.platform}/>
-        <SortSelector onSelectedOrder={(sortOrder)=>setGameQurey({...gameQurey,sortOrder})} selectedOrder={gameQurey.sortOrder}/>
-        </HStack>
-        <GameGrid gameQurey={gameQurey}/>
+        <Box paddingLeft={2}>
+          <DynamicHeading gameQuery={gameQurey}/>
+          <HStack spaceX={1}>
+          <PlatFormSelector onSelected={(platform)=>setGameQurey({...gameQurey,platform})} selectedPlatform={gameQurey.platform}/>
+          <SortSelector onSelectedOrder={(sortOrder)=>setGameQurey({...gameQurey,sortOrder})} selectedOrder={gameQurey.sortOrder}/>
+          </HStack>
+          <GameGrid gameQurey={gameQurey}/>
+        </Box>
       </GridItem>
     </Grid>
   );
